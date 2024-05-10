@@ -1,11 +1,11 @@
 import { Header } from './components';
-import { NewNotePage } from './pages';
+import { AppRoutes } from './routes';
 
 export default function App() {
   return (
     <>
       <Header />
-      <NewNotePage />
+      <AppRoutes />
     </>
   );
 }
