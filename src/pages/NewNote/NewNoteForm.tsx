@@ -1,3 +1,5 @@
+import { SampleButton } from '../../components/utilities';
+
 export const NewNoteForm = () => {
   return (
     <form>
@@ -63,12 +65,7 @@ export const NewNoteForm = () => {
         >
           Go back
         </button>
-        <button
-          type="submit"
-          className="rounded-md bg-green-800 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-orange-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-        >
-          Save
-        </button>
+        <SampleButton text="Save" buttonType="submit" />
       </div>
     </form>
   );

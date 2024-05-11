@@ -5,7 +5,9 @@ export default function App() {
   return (
     <>
       <Header />
-      <AppRoutes />
+      <div className="p-12">
+        <AppRoutes />
+      </div>
     </>
   );
 }

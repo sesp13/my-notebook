@@ -1,7 +1,13 @@
+import { LeftHomeSidebar } from './LeftHomeSidebar/LeftHomeSidebar';
+
 export const HomePage = () => {
   return (
-    <div>
-      <h1 className="text-2xl text-green-700">Home</h1>
-    </div>
+    <>
+      <h2 className="text-5xl text-green-700 font-bold">Welcome back!</h2>
+      <section className="flex justify-between mt-8 gap-10">
+        <LeftHomeSidebar />
+        <section className="w-2/3">Sidebar 2</section>
+      </section>
+    </>
   );
 };
