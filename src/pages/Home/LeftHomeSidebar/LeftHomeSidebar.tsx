@@ -17,7 +17,7 @@ export const LeftHomeSidebar = () => {
         <SampleButton text="Search" additionalClasses="ml-2"></SampleButton>
       </div>
       <div className="mt-5">
-        <h3 className="main-theme-color font-bold text-2xl ">All Notes</h3>
+        <h3 className="text-main font-bold text-2xl ">All Notes</h3>
       </div>
     </section>
   );
