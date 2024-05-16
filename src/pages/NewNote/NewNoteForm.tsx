@@ -1,17 +1,27 @@
+import { SubmitHandler, useForm } from 'react-hook-form';
 import { SampleButton } from '../../components/utilities';
 
+type NewNoteFormType = {
+  name: string;
+  content: string;
+};
+
 export const NewNoteForm = () => {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors, isValid },
+  } = useForm<NewNoteFormType>();
+  const onSubmit: SubmitHandler<NewNoteFormType> = (data) => {
+    console.log(isValid);
+    console.log(errors);
+    console.log(data);
+  };
+
   return (
-    <form>
+    <form onSubmit={handleSubmit(onSubmit)}>
       <div className="space-y-12">
         <div className="border-b border-gray-900/10 pb-12">
-          <h1 className=" font-semibold leading-7 text-green-900 text-3xl">
-            Create a new note
-          </h1>
-          <p className="mt-1 text-sm leading-6 text-gray-600">
-            Feel free to create a new note to work into your new project
-          </p>
-
           <div className="mt-5">
             <div className="">
               <label
@@ -29,6 +39,7 @@ export const NewNoteForm = () => {
                     autoComplete="username"
                     className="block flex-1 border-0 bg-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
                     placeholder="The best name ever"
+                    {...register('name', { required: true })}
                   />
                 </div>
               </div>
@@ -48,6 +59,7 @@ export const NewNoteForm = () => {
                   rows={3}
                   className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-green-800"
                   defaultValue={''}
+                  {...register('content', { required: true })}
                 />
               </div>
               <p className="mt-3 text-sm leading-6 text-gray-600">
@@ -65,7 +77,7 @@ export const NewNoteForm = () => {
         >
           Go back
         </button>
-        <SampleButton text="Save" buttonType="submit" />
+        <SampleButton text="Save" buttonType="submit" isDisabled={!isValid} />
       </div>
     </form>
   );

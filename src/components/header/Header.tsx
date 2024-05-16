@@ -10,20 +10,19 @@ export const Header = () => {
         aria-label="Global"
       >
         <div className="flex lg:flex-1">
-          <a href="#" className="-m-1.5 p-1.5">
-            <span className="sr-only">Your Company</span>
+          <Link to={AppRouting.HOME} className="-m-1.5 p-1.5">
             <p className="font-extrabold text-4xl text-secondary">
               My NoteBook
             </p>
-          </a>
+          </Link>
         </div>
         <Popover.Group className="flex gap-x-12">
-          <a
-            href="#"
+          <Link
+            to={AppRouting.HOME}
             className="text-sm font-semibold leading-6 text-secondary"
           >
             View all notes
-          </a>
+          </Link>
           <Link
             to={AppRouting.ADD_NOTE}
             className="text-sm font-semibold leading-6 text-secondary"

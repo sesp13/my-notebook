@@ -2,12 +2,15 @@ interface SampleButtonParams {
   text: string;
   buttonType?: 'button' | 'submit';
   additionalClasses?: string;
+  isDisabled?: boolean;
 }
 
 export const SampleButton = (params: SampleButtonParams) => {
-  const { text, additionalClasses, buttonType } = params;
+  const { text, additionalClasses, buttonType, isDisabled } = params;
   const computedType = buttonType ? buttonType : 'button';
   const otherClasses = additionalClasses ? additionalClasses : '';
+  const computedDisabled = isDisabled ? true : false;
+
   return (
     <button
       type={computedType}
@@ -16,6 +19,7 @@ export const SampleButton = (params: SampleButtonParams) => {
        focus-visible:outline focus-visible:outline-2
        focus-visible:outline-offset-2 focus-visible:outline-orange-500
       ${otherClasses}`}
+      disabled={computedDisabled}
     >
       {text}
     </button>
