@@ -1,5 +1,5 @@
+import { ErrorText, SampleButton } from '../../components/utilities';
 import { SubmitHandler, useForm } from 'react-hook-form';
-import { SampleButton } from '../../components/utilities';
 
 type NewNoteFormType = {
   name: string;
@@ -13,9 +13,7 @@ export const NewNoteForm = () => {
     formState: { errors, isValid },
   } = useForm<NewNoteFormType>();
   const onSubmit: SubmitHandler<NewNoteFormType> = (data) => {
-    console.log(isValid);
-    console.log(errors);
-    console.log(data);
+    // Request to json server
   };
 
   return (
@@ -31,10 +29,9 @@ export const NewNoteForm = () => {
                 Name
               </label>
               <div className="mt-2">
-                <div className="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-green-800 ">
+                <div className="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-1 focus-within:ring-inset focus-within:ring-green-800 ">
                   <input
                     type="text"
-                    name="name"
                     id="username"
                     autoComplete="username"
                     className="block flex-1 border-0 bg-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
@@ -43,6 +40,10 @@ export const NewNoteForm = () => {
                   />
                 </div>
               </div>
+              <ErrorText
+                text="This field is required"
+                isShow={errors.name ? true : false}
+              />
             </div>
 
             <div className="mt-4">
@@ -55,13 +56,16 @@ export const NewNoteForm = () => {
               <div className="mt-2">
                 <textarea
                   id="about"
-                  name="about"
                   rows={3}
-                  className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-green-800"
+                  className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-1 focus:ring-inset focus:ring-green-800"
                   defaultValue={''}
                   {...register('content', { required: true })}
                 />
               </div>
+              <ErrorText
+                text="This field is required"
+                isShow={errors.content ? true : false}
+              />
               <p className="mt-3 text-sm leading-6 text-gray-600">
                 Give a description for your note
               </p>
@@ -77,7 +81,11 @@ export const NewNoteForm = () => {
         >
           Go back
         </button>
-        <SampleButton text="Save" buttonType="submit" isDisabled={!isValid} />
+        <SampleButton
+          text="Save"
+          buttonType="submit"
+          additionalClasses={!isValid ? 'bg-zinc-500' : ''}
+        />
       </div>
     </form>
   );
