@@ -1,19 +1,25 @@
 import { ErrorText, SampleButton } from '../../components/utilities';
 import { SubmitHandler, useForm } from 'react-hook-form';
 
-type NewNoteFormType = {
-  name: string;
-  content: string;
-};
+import { INote } from '../../models';
+import { useNoteService } from '../../hooks/NoteService';
 
 export const NewNoteForm = () => {
+  const { saveNote: saveNoteApi } = useNoteService();
+
   const {
     register,
     handleSubmit,
     formState: { errors, isValid },
-  } = useForm<NewNoteFormType>();
-  const onSubmit: SubmitHandler<NewNoteFormType> = (data) => {
-    // Request to json server
+  } = useForm<INote>();
+  const onSubmit: SubmitHandler<INote> = (data) => {
+    saveNotes(data);
+  };
+
+  const saveNotes = async (data: INote) => {
+    const res = await saveNoteApi(data);
+    console.log(res);
+    console.log('New note created!');
   };
 
   return (
