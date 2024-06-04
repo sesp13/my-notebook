@@ -1,3 +1,4 @@
+import { CustomAlert } from '../../components';
 import { NewNoteForm } from './NewNoteForm';
 
 export const NewNotePage = () => {
@@ -9,6 +10,11 @@ export const NewNotePage = () => {
       <p className="mt-1 text-sm leading-6 text-gray-600">
         Feel free to create a new note to work into your new project
       </p>
+      <CustomAlert
+        alertType="success"
+        title="Success"
+        content="The note has been saved"
+      />
       <NewNoteForm />
     </>
   );

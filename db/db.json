@@ -10,5 +10,15 @@
       "content": "Contenido de esta otra nota",
       "id": 2
     }
+  ],
+  "categories": [
+    {
+      "id": 1,
+      "name": "Category 1"
+    },
+    {
+      "id": 2,
+      "name": "Category 2"
+    }
   ]
 }

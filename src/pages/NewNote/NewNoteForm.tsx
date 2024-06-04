@@ -11,15 +11,15 @@ export const NewNoteForm = () => {
     register,
     handleSubmit,
     formState: { errors, isValid },
+    reset: resetForm,
   } = useForm<INote>();
   const onSubmit: SubmitHandler<INote> = (data) => {
     saveNotes(data);
   };
 
   const saveNotes = async (data: INote) => {
-    const res = await saveNoteApi(data);
-    console.log(res);
-    console.log('New note created!');
+    await saveNoteApi(data);
+    resetForm();
   };
 
   return (
