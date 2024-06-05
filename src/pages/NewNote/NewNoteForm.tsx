@@ -2,10 +2,13 @@ import { ErrorText, SampleButton } from '../../components/utilities';
 import { SubmitHandler, useForm } from 'react-hook-form';
 
 import { INote } from '../../models';
-import { useNoteService } from '../../hooks/NoteService';
 
-export const NewNoteForm = () => {
-  const { saveNote: saveNoteApi } = useNoteService();
+interface NewNoteFormParams {
+  onSave: (note: INote) => Promise<{ isSuccess: boolean }>;
+}
+
+export const NewNoteForm = (params: NewNoteFormParams) => {
+  const { onSave } = params;
 
   const {
     register,
@@ -14,12 +17,11 @@ export const NewNoteForm = () => {
     reset: resetForm,
   } = useForm<INote>();
   const onSubmit: SubmitHandler<INote> = (data) => {
-    saveNotes(data);
-  };
-
-  const saveNotes = async (data: INote) => {
-    await saveNoteApi(data);
-    resetForm();
+    onSave(data).then(({ isSuccess }) => {
+      if (isSuccess) {
+        resetForm();
+      }
+    });
   };
 
   return (

@@ -9,6 +9,16 @@
       "name": "Una segunda Nota",
       "content": "Contenido de esta otra nota",
       "id": 2
+    },
+    {
+      "name": "Hello",
+      "content": "World",
+      "id": 3
+    },
+    {
+      "name": "MALA pocion",
+      "content": "ssss",
+      "id": 4
     }
   ],
   "categories": [
