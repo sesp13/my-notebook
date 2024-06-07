@@ -17,7 +17,10 @@ export const CustomAlert = (props: CustomAlertProps) => {
     alertType === 'success' ? successClasses : errorClasses;
 
   return (
-    <div className={`max-w-sm mx-auto mt-10 ${additionalClasses}`}>
+    <div
+      className={`max-w-sm mx-auto mt-10 ${additionalClasses}`}
+      aria-label="custom-alert"
+    >
       <div className={computedClasses} role="alert">
         {title !== undefined ? (
           <strong className="font-bold">{title}</strong>

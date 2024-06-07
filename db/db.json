@@ -17,8 +17,13 @@
     },
     {
       "name": "Otra nota interesante",
-      "content": "Que queres hpta",
+      "content": "Que queres?",
       "id": 4
+    },
+    {
+      "name": "Hola amigos",
+      "content": "Cómo están el dia de hoy haciendo estas notas para el proyecto",
+      "id": 5
     }
   ],
   "categories": [

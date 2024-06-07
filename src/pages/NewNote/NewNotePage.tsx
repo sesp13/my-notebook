@@ -44,7 +44,7 @@ export const NewNotePage = () => {
   };
 
   return (
-    <>
+    <section aria-label='new-note-page'>
       <h1 className="font-semibold leading-7 text-main text-3xl">
         Create a new note
       </h1>
@@ -61,6 +61,6 @@ export const NewNotePage = () => {
         ''
       )}
       <NewNoteForm onSave={(note) => saveNotes(note)} />
-    </>
+    </section>
   );
 };
