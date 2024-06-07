@@ -3,12 +3,12 @@ import { MainHomeContent } from './MainHomeContent/MainHomeContent';
 
 export const HomePage = () => {
   return (
-    <>
+    <section aria-label='home-page'>
       <h2 className="text-5xl text-main font-bold">Welcome back!</h2>
-      <section className="flex justify-between mt-8 gap-10">
+      <div className="flex justify-between mt-8 gap-10">
         <LeftHomeSidebar />
         <MainHomeContent />
-      </section>
-    </>
+      </div>
+    </section>
   );
 };

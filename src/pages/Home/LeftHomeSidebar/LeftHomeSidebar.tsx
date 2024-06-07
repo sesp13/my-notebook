@@ -2,7 +2,7 @@ import { SampleButton } from '../../../components';
 
 export const LeftHomeSidebar = () => {
   return (
-    <section className="w-1/3">
+    <section aria-label='left-home-sidebar' className="w-1/3">
       <div className="flex justify-between">
         <div className="sample-input-container w-full">
           <input
