@@ -4,7 +4,13 @@ const API_URL = 'http://localhost:3000/notes';
 
 export const useNoteService = () => {
   const getAllNotes = async (): Promise<INote[]> => {
-    const url = `${API_URL}`;
+    const url = `${API_URL}?_limit=2&_sort=id&_order=desc`;
+    const res = await fetch(url);
+    return await res.json();
+  };
+
+  const getLatestNotes = async (numberOfRecords: number): Promise<INote[]> => {
+    const url = `${API_URL}?_limit=${numberOfRecords}&_sort=id&_order=desc`;
     const res = await fetch(url);
     return await res.json();
   };
@@ -23,6 +29,7 @@ export const useNoteService = () => {
 
   return {
     getAllNotes,
+    getLatestNotes,
     saveNote,
   };
 };

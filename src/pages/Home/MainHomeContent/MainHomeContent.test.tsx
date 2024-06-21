@@ -4,15 +4,15 @@ import { MainHomeContent } from './MainHomeContent';
 import { customNotes } from '../../../tests';
 import { useNoteService } from '../../../hooks/NoteService';
 
-const getAllNotesMock = jest.fn();
+const getLatestNotesMock = jest.fn();
 
 jest.mock('../../../hooks/NoteService');
 const mockedHook = jest.mocked(useNoteService);
 mockedHook.mockReturnValue({
-  getAllNotes: getAllNotesMock,
-  saveNote: jest.fn(),
+  ...jest.requireActual('../../../hooks/NoteService'),
+  getLatestNotes: getLatestNotesMock,
 });
-getAllNotesMock.mockReturnValue([]);
+getLatestNotesMock.mockReturnValue([]);
 
 const setupComponent = async () =>
   await waitFor(() => render(<MainHomeContent />));
@@ -26,13 +26,13 @@ describe('Tests on MainHomeContent', () => {
     await setupComponent();
   });
 
-  test('should call getAllNotes from useNoteService', async () => {
+  test('should call getLatestNotes from useNoteService', async () => {
     await setupComponent();
-    expect(getAllNotesMock).toHaveBeenCalled();
+    expect(getLatestNotesMock).toHaveBeenCalled();
   });
 
   test('should render HomeNote items', async () => {
-    getAllNotesMock.mockReturnValue(customNotes);
+    getLatestNotesMock.mockReturnValue(customNotes);
     await setupComponent();
     const renderedNotes = screen.getAllByLabelText('home-note');
     expect(renderedNotes.length).toBe(customNotes.length)
