@@ -1,14 +1,18 @@
-import { useEffect, useState } from 'react';
+import { ChangeEvent, useEffect, useState } from 'react';
 
+import { AppRouting } from '../../../routes';
 import { INote } from '../../../models';
 import { LeftHomeNoteComponent } from './LeftHomeNoteComponent';
 import { SampleButton } from '../../../components';
+import { useNavigate } from 'react-router-dom';
 import { useNoteService } from '../../../hooks';
 
 export const LeftHomeSidebar = () => {
   const [notes, setNotes] = useState<INote[]>([]);
+  const [searchText, setSearchText] = useState('');
 
   const { getAllNotes: getAllNotesApi } = useNoteService();
+  const navigate = useNavigate();
 
   useEffect(() => {
     getAllNotes();
@@ -20,8 +24,12 @@ export const LeftHomeSidebar = () => {
   };
 
   const onSearchNote = () => {
-    console.log('Searching');
+    navigate(`${AppRouting.SEARCH}?query=${searchText}`);
   };
+
+  const onChangeSearch = (e: any) => {
+    setSearchText(e.target.value)
+  }
 
   return (
     <section aria-label="left-home-sidebar" className="w-1/3">
@@ -34,12 +42,15 @@ export const LeftHomeSidebar = () => {
             autoComplete="username"
             className="sample-input"
             placeholder="The best name ever"
+            value={searchText}
+            onChange={onChangeSearch}
+            aria-label='search-input'
           />
         </div>
         <SampleButton
           text="Search"
           additionalClasses="ml-2"
-          ariaLabel='search-btn'
+          ariaLabel="search-btn"
           onClick={onSearchNote}
         />
       </div>
