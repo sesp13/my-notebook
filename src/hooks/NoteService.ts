@@ -4,7 +4,7 @@ const API_URL = 'http://localhost:3000/notes';
 
 export const useNoteService = () => {
   const getAllNotes = async (): Promise<INote[]> => {
-    const url = `${API_URL}?_limit=2&_sort=id&_order=desc`;
+    const url = `${API_URL}`;
     const res = await fetch(url);
     return await res.json();
   };

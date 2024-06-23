@@ -3,13 +3,29 @@ interface SampleButtonParams {
   buttonType?: 'button' | 'submit';
   additionalClasses?: string;
   isDisabled?: boolean;
+  ariaLabel?: string;
+  onClick?: () => void;
 }
 
 export const SampleButton = (params: SampleButtonParams) => {
-  const { text, additionalClasses, buttonType, isDisabled } = params;
+  const {
+    text,
+    additionalClasses,
+    buttonType,
+    isDisabled,
+    onClick,
+    ariaLabel,
+  } = params;
   const computedType = buttonType ? buttonType : 'button';
   const otherClasses = additionalClasses ? additionalClasses : '';
   const computedDisabled = isDisabled ? true : false;
+  const computedAriaLabel = ariaLabel ? ariaLabel : '';
+
+  const onSampleClick = () => {
+    if (onClick) {
+      onClick();
+    }
+  };
 
   return (
     <button
@@ -20,6 +36,8 @@ export const SampleButton = (params: SampleButtonParams) => {
        focus-visible:outline-offset-2 focus-visible:outline-orange-500
       ${otherClasses}`}
       disabled={computedDisabled}
+      aria-label={computedAriaLabel}
+      onClick={onSampleClick}
     >
       {text}
     </button>
