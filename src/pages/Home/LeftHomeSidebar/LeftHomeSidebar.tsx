@@ -1,10 +1,10 @@
-import { ChangeEvent, useEffect, useState } from 'react';
+import { createSearchParams, useNavigate } from 'react-router-dom';
+import { useEffect, useState } from 'react';
 
 import { AppRouting } from '../../../routes';
 import { INote } from '../../../models';
 import { LeftHomeNoteComponent } from './LeftHomeNoteComponent';
 import { SampleButton } from '../../../components';
-import { useNavigate } from 'react-router-dom';
 import { useNoteService } from '../../../hooks';
 
 export const LeftHomeSidebar = () => {
@@ -24,12 +24,17 @@ export const LeftHomeSidebar = () => {
   };
 
   const onSearchNote = () => {
-    navigate(`${AppRouting.SEARCH}?query=${searchText}`);
+    navigate({
+      pathname: AppRouting.SEARCH,
+      search: createSearchParams({
+        query: searchText,
+      }).toString(),
+    });
   };
 
   const onChangeSearch = (e: any) => {
-    setSearchText(e.target.value)
-  }
+    setSearchText(e.target.value);
+  };
 
   return (
     <section aria-label="left-home-sidebar" className="w-1/3">
@@ -44,7 +49,7 @@ export const LeftHomeSidebar = () => {
             placeholder="The best name ever"
             value={searchText}
             onChange={onChangeSearch}
-            aria-label='search-input'
+            aria-label="search-input"
           />
         </div>
         <SampleButton

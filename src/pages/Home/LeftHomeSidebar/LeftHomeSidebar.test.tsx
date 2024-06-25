@@ -1,7 +1,7 @@
+import { BrowserRouter, createSearchParams } from 'react-router-dom';
 import { fireEvent, screen, waitFor } from '@testing-library/dom';
 
 import { AppRouting } from '../../../routes';
-import { BrowserRouter } from 'react-router-dom';
 import { LeftHomeSidebar } from './LeftHomeSidebar';
 import { customNotes } from '../../../tests';
 import { render } from '@testing-library/react';
@@ -61,8 +61,11 @@ describe('Tests on LeftHomeSidebar', () => {
     fireEvent.change(searchInput, { target: { value: searchParam } });
     const searchBtn = screen.getByLabelText('search-btn');
     fireEvent.click(searchBtn);
-    expect(mockedNavigate).toHaveBeenCalledWith(
-      `${AppRouting.SEARCH}?query=${searchParam}`
-    );
+    expect(mockedNavigate).toHaveBeenCalledWith({
+      pathname: AppRouting.SEARCH,
+      search: createSearchParams({
+        query: searchParam,
+      }).toString(),
+    });
   });
 });

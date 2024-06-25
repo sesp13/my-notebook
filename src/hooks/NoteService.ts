@@ -27,9 +27,16 @@ export const useNoteService = () => {
     return await res.json();
   };
 
+  const searchNote = async (query: string): Promise<INote[]> => {
+    const url = `${API_URL}?name_like=${query}`;
+    const res = await fetch(url);
+    return res.json();
+  };
+
   return {
     getAllNotes,
     getLatestNotes,
     saveNote,
+    searchNote
   };
 };
