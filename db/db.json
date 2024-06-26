@@ -24,6 +24,11 @@
       "name": "Hola amigos",
       "content": "Cómo están el dia de hoy haciendo estas notas para el proyecto",
       "id": 5
+    },
+    {
+      "name": "Nota nueva",
+      "content": "Hola que quieres",
+      "id": 6
     }
   ],
   "categories": [
