@@ -1,5 +1,6 @@
 export enum AppRouting {
   ADD_NOTE = '/add-note',
   HOME = '/',
-  SEARCH = '/search'
+  SEARCH = '/search',
+  DETAIL = '/detail'
 }
