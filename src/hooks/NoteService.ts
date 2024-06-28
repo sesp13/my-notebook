@@ -33,10 +33,17 @@ export const useNoteService = () => {
     return res.json();
   };
 
+  const getNoteById = async(id: string): Promise<INote> => {
+    const url = `${API_URL}/${id}`;
+    const res = await fetch(url);
+    return res.json();
+  }
+
   return {
     getAllNotes,
     getLatestNotes,
     saveNote,
-    searchNote
+    searchNote,
+    getNoteById
   };
 };
