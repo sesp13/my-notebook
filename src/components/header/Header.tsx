@@ -1,6 +1,6 @@
-import { Popover } from '@headlessui/react';
-import { Link } from 'react-router-dom';
 import { AppRouting } from '../../routes';
+import { Link } from 'react-router-dom';
+import { Popover } from '@headlessui/react';
 
 export const Header = () => {
   return (
@@ -22,6 +22,12 @@ export const Header = () => {
             className="text-sm font-semibold leading-6 text-secondary"
           >
             View all notes
+          </Link>
+          <Link
+            to={AppRouting.CATEGORIES}
+            className="text-sm font-semibold leading-6 text-secondary"
+          >
+            View Categories
           </Link>
           <Link
             to={AppRouting.ADD_NOTE}
