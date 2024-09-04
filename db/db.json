@@ -34,6 +34,12 @@
       "name": "Nota con valor",
       "content": "          <section>\n            <h1 className=\"text-main text-5xl font-bold\">Note: {note.name} </h1>\n            <p className=\"mt-2\">\n              Category: <span className=\"italic text-main\">School</span>- Date:\n              <span className=\"italic text-main\">\n                {' '}\n                {new Date().toISOString()}\n              </span>\n            </p>\n            <div className='pt-5 pl-4'>\n              <h3 className=\"text-main text-3xl font-bold\">Content:</h3>\n              <p>{note.content}</p>\n            </div>\n          </section>",
       "id": 7
+    },
+    {
+      "name": "La ultima!",
+      "content": "Que más mijitos",
+      "categoryId": "4",
+      "id": 8
     }
   ],
   "categories": [

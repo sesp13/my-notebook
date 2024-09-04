@@ -1,6 +1,7 @@
 export type INote = {
   name: string;
   content: string;
+  categoryId: string;
   id: number;
 };
 
