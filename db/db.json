@@ -44,6 +44,18 @@
     {
       "id": 2,
       "name": "Category 2"
+    },
+    {
+      "name": "Who knows",
+      "id": 3
+    },
+    {
+      "name": "The newest",
+      "id": 4
+    },
+    {
+      "name": "I love this",
+      "id": 5
     }
   ]
 }
