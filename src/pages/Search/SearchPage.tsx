@@ -44,6 +44,7 @@ export const SearchPage = () => {
             <HomeNoteComponent
               title={note.name}
               content={note.content}
+              categoryId={note.categoryId}
               key={note.id}
               noteDate={new Date().toISOString()}
             />

@@ -26,6 +26,7 @@ export const MainHomeContent = () => {
           key={note.id}
           title={note.name}
           content={note.content}
+          categoryId={note.categoryId}
           noteDate={new Date().toISOString()}
         />
       ))}

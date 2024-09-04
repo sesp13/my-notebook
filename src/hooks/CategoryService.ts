@@ -21,9 +21,15 @@ export const useCategoryService = () => {
     return await res.json();
   };
 
+  const getCategoryById = async (id: string): Promise<ICategory> => {
+    const url = `${API_URL}/${id}`;
+    const res = await fetch(url);
+    return res.json();
+  };
 
   return {
     getAllCategories,
-    saveCategory
+    getCategoryById,
+    saveCategory,
   };
 };

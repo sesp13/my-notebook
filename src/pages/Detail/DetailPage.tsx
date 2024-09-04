@@ -1,15 +1,17 @@
+import { ICategory, INote } from '../../models';
+import { useCategoryService, useNoteService } from '../../hooks';
 import { useEffect, useState } from 'react';
 
-import { INote } from '../../models';
-import { useNoteService } from '../../hooks';
 import { useSearchParams } from 'react-router-dom';
 
 export const DetailPage = () => {
   const [searchParams] = useSearchParams();
   const { getNoteById: getNoteByIdApi } = useNoteService();
+  const { getCategoryById: getCategoryByIdApi } = useCategoryService();
 
   const [query, setQuery] = useState<string | null>(null);
   const [note, setNote] = useState<INote | null>(null);
+  const [category, setCategory] = useState<ICategory | null>(null);
 
   useEffect(() => {
     const tempQuery = searchParams.get('query');
@@ -23,6 +25,8 @@ export const DetailPage = () => {
     const note = await getNoteByIdApi(noteId);
     if (note.id !== undefined) {
       setNote(note);
+      const categoryApi = await getCategoryByIdApi(note.categoryId);
+      setCategory(categoryApi);
     }
   };
 
@@ -33,13 +37,20 @@ export const DetailPage = () => {
           <section>
             <h1 className="text-main text-5xl font-bold">Note: {note.name} </h1>
             <p className="mt-2">
-              Category: <span className="italic text-main">School</span>- Date:
+              {category?.name ? (
+                <>
+                  Category: <span className="italic text-main">{category.name}</span> -
+                  Date:
+                </>
+              ) : (
+                <>Date:</>
+              )}
               <span className="italic text-main">
                 {' '}
                 {new Date().toISOString()}
               </span>
             </p>
-            <div className='pt-5 pl-4'>
+            <div className="pt-5 pl-4">
               <h3 className="text-main text-3xl font-bold">Content:</h3>
               <p>{note.content}</p>
             </div>
